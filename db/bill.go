@@ -55,6 +55,15 @@ func (repo BillRepo) CreateBill(channel uint64, charge string) (bill *Bill, er e
 	return bill, nil
 }
 
+/**
+ * @Description:
+ * @receiver repo
+ * @param id
+ * @param paidTime
+ * @param status
+ * @return bill
+ * @return err
+ */
 func (repo BillRepo) UpdateBill(id uint64, paidTime time.Time, status uint8) (bill *Bill, err error) {
 	if affectedRows, er := repo.billDao.Update(updateSchema, paidTime, status, id); er != nil || affectedRows < 1 {
 		return nil, errors.New("更新账单失败")
