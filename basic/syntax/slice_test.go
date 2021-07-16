@@ -3,7 +3,7 @@
   @since: 2021/7/14
   @desc: //TODO
 **/
-package basic
+package syntax
 
 import "testing"
 

@@ -3,7 +3,7 @@
   @since: 2021/7/12
   @desc: //TODO
 **/
-package component
+package godotenv
 
 import (
 	"github.com/stretchr/testify/assert"

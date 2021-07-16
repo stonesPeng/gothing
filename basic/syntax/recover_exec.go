@@ -3,7 +3,7 @@
   @since: 2021/7/12
   @desc: //TODO
 **/
-package basic
+package syntax
 
 import "fmt"
 
