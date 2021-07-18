@@ -11,12 +11,7 @@ import (
 )
 
 func TestEnv(t *testing.T) {
-	//testify.NotPanics(t, func() {
-	//	ReadEnv()
-	//})
-
 	assert.NotPanics(t, func() {
-		Read2Map()
+		ReadEnv()
 	})
-
 }
