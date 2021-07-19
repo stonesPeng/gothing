@@ -40,3 +40,34 @@ func TestMockMethodWithArgs(t *testing.T) {
 	assert.Equal(t, "Message is: lah", g.Greet())
 	theDBMock.AssertExpectations(t)
 }
+
+func TestMockMethodWithArgsIgnoreArgs(t *testing.T) {
+	theDBMock := dbMock{}
+	theDBMock.On("FetchMessage", mock.Anything).Return("lah", nil)
+	g := greeter{&theDBMock, "in"}
+	assert.Equal(t, "Message is: lah", g.Greet())
+	theDBMock.AssertCalled(t, "FetchMessage", "in")
+	theDBMock.AssertNotCalled(t, "FetchMessage", "ch")
+	theDBMock.AssertExpectations(t)
+	mock.AssertExpectationsForObjects(t, &theDBMock)
+}
+
+func TestMockMethodWithArgsIgnoreArgsType(t *testing.T) {
+	theDBMock := dbMock{}
+	theDBMock.On("FetchMessage", mock.AnythingOfTypeArgument("string")).Return("lah", nil)
+	g := greeter{&theDBMock, "in"}
+	assert.Equal(t, "Message is: lah", g.Greet())
+	theDBMock.AssertCalled(t, "FetchMessage", "in")
+	theDBMock.AssertNotCalled(t, "FetchMessage", "ch")
+	theDBMock.AssertExpectations(t)
+	mock.AssertExpectationsForObjects(t, &theDBMock)
+}
+
+func TestMatchedBy(t *testing.T) {
+	theDBMock := dbMock{}
+	theDBMock.On("FetchMessage", mock.MatchedBy(func(lang string) bool { return lang == "in" })).Return("bzzzz", nil)
+	g := greeter{&theDBMock, "in"}
+	msg := g.Greet()
+	assert.Equal(t, "Message is: bzzzz", msg)
+	theDBMock.AssertExpectations(t)
+}
