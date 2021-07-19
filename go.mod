@@ -13,6 +13,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.4 // indirect
 	github.com/joho/godotenv v1.3.0 // indirect
 	github.com/spf13/viper v1.8.1 // indirect
+	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/tkanos/gonfig v0.0.0-20210106201359-53e13348de2f // indirect
 	github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8 // indirect
