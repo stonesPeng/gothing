@@ -29,7 +29,7 @@ func TestMockMethodWithoutArgs(t *testing.T) {
 	theDBMock := dbMock{}
 	theDBMock.On("FetchDefaultMessage").Return("foofofofof", nil)
 	g := greeter{&theDBMock, "en"}
-	assert.Equal(t, "Message is: foofofofof", g.Greet())
+	assert.Equal(t, "Message is: foofofofof", g.GreetInDefaultMsg())
 	theDBMock.AssertNumberOfCalls(t, "FetchDefaultMessage", 1)
 	theDBMock.AssertExpectations(t)
 }
