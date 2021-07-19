@@ -3,7 +3,7 @@
   @since: 2021/7/7
   @desc: //TODO
 **/
-package db
+package sqlx
 
 import (
 	"errors"
